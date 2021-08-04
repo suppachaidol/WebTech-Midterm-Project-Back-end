@@ -1,23 +1,57 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import HomePage from '@/views/HomePage'
+import ProductPage from '@/views/ProductPage'
+import RewardPage from '@/views/RewardPage'
+import LeaderboardPage from '@/views/LeaderboardPage'
+import ProfilePage from '@/views/ProfilePage'
+import LoginPage from '@/views/auth/LoginPage'
+import LogoutPage from '@/views/auth/LogoutPage'
+import RegisterPage from '@/views/auth/RegisterPage'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    name: 'HomePage',
+    component: HomePage
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
+    path: '/product',
+    name: 'ProductPage',
+    component: ProductPage
+  },
+  {
+    path: '/reward',
+    name: 'RewardPage',
+    component: RewardPage
+  },
+  {
+    path: '/leaderboard',
+    name: 'LeaderboardPage',
+    component: LeaderboardPage
+  },
+  {
+    path: '/profile',
+    name: 'ProfilePage',
+    component: ProfilePage
+  },
+  {
+    path: '/login',
+    name: 'LoginPage',
+    component: LoginPage
+  },
+  {
+    path: '/logout',
+    name: 'LogoutPage',
+    component: LogoutPage
+  },
+  {
+    path: '/register',
+    name: 'RegisterPage',
+    component: RegisterPage
+  },
 ]
 
 const router = new VueRouter({
