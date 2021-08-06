@@ -8,7 +8,7 @@ const auth_key = "auth-chakaimook"
 let auth = JSON.parse(localStorage.getItem(auth_key))
 
 const initialState = {
-  usesr: auth ? auth.user : "",
+  user: auth ? auth.user : "",
   jwt: auth ? auth.jwt : "",
   isAuthen: auth ? true : false
 }
