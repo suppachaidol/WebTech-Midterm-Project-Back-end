@@ -27,6 +27,7 @@ export default {
         return this.isAuthen() && user.role.name === "Authenticated"
     },
 
+
     getUser() {
         return user
     },

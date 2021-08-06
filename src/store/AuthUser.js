@@ -8,9 +8,9 @@ const auth_key = "auth-chakaimook"
 let auth = JSON.parse(localStorage.getItem(auth_key))
 
 const initialState = {
-  usesr: auth ? auth.user : "",
+  user: auth ? auth.user : "",
   jwt: auth ? auth.jwt : "",
-  isAuthen: auth ? true : false
+  isAuthen: auth ? true : false,
 }
 
 export default new Vuex.Store({
@@ -20,13 +20,14 @@ export default new Vuex.Store({
     loginSuccess(state, user, jwt) {
       state.user = user
       state.jwt = jwt
-      state.isAuthen = true
+      state.isAuthen = true 
     },
     logoutSuccess(state) {
       state.user = ""
       state.jwt = ""
       state.isAuthen = false
     }
+    
   },
 
   actions: {

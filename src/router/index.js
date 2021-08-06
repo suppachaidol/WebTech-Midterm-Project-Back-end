@@ -8,6 +8,10 @@ import ProfilePage from '@/views/ProfilePage'
 import LoginPage from '@/views/auth/LoginPage'
 import LogoutPage from '@/views/auth/LogoutPage'
 import RegisterPage from '@/views/auth/RegisterPage'
+import AddReward from '@/views/reward/AddReward'
+import EditReward from '@/views/reward/EditReward'
+import DeleteReward from '@/views/reward/DeleteReward'
+import GetReward from '@/views/reward/GetReward'
 
 Vue.use(VueRouter)
 
@@ -51,6 +55,26 @@ const routes = [
     path: '/register',
     name: 'RegisterPage',
     component: RegisterPage
+  },
+  {
+    path: '/addreward',
+    name: 'AddReward',
+    component: AddReward
+  },
+  {
+    path: "/reward/:id/editreward",
+    name: "EditReward",
+    component: EditReward,
+  },
+  {
+    path: "/reward/:id/deletereward",
+    name: "DeleteReward",
+    component: DeleteReward,
+  },
+  {
+    path: "/reward/:id/getreward",
+    name: "GetReward",
+    component: GetReward,
   },
 ]
 
