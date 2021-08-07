@@ -25,14 +25,14 @@
                 :to="{ name: 'GetReward', params: { id: rew.id } }"
                 >แลก</router-link
               ></td>
-            <td v-if="isAuthen()">
+            <td v-if="isAdmin()">
               <router-link
                 class="edit"
                 :to="{ name: 'EditReward', params: { id: rew.id } }"
                 >แก้ไข</router-link
               >
             </td>
-            <td v-if="isAuthen()">
+            <td v-if="isAdmin()">
               <router-link
                 class="delete"
                 :to="{ name: 'DeleteReward', params: { id: rew.id } }"
@@ -43,7 +43,7 @@
         </tbody>
       </table>
     </div>
-    <router-link class="add" v-if="isAuthen()" to="/addreward"
+    <router-link class="add" v-if="isAdmin()" to="/addreward"
       >เพิ่มของรางวัล</router-link
     >
   </div>
@@ -77,7 +77,18 @@ export default {
         return AuthUser.getters.isAuthen
     },
 
-
+    isAdmin() {
+      if (AuthUser.getters.user.role !== undefined) {
+        if (AuthUser.getters.user.role.name === "Admin") {
+          return true
+        } else {
+          return false
+        }
+      } else {
+        return false
+      }
+    }
+  
   },
 };
 </script>
