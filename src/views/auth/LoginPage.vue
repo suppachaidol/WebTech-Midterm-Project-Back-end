@@ -1,10 +1,10 @@
 <template>
-  <div>
-      <div class="top">
-        <h1>LOG IN</h1>
-      </div>
-      
+  <div class="page">
       <div class="container">
+        <div class="top">
+            <h1>เข้าสู่ระบบ</h1>
+        </div>
+
         <form @submit.prevent="login">
             <div class="content">
                 <label for="email">Email</label>
@@ -16,8 +16,8 @@
                 <input v-model="form.password" type="password" autocomplete="off">
             </div>
 
-            <div class="btn">
-                <button>Login</button>
+            <div class="box">
+                <button class="btn">ยืนยัน</button>
             </div>
         </form>
       </div>
@@ -49,37 +49,65 @@ export default {
             }
         }
     }
-
 }
 </script>
 
 <style lang="scss" scoped>
-    .top {
-        color: #2c3e50;
-        font-weight: bold;
-        left: 50%;
-        width: 50%;
-        height: 10%;
-        padding: 10px;
-        margin: 50px;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        text-align: center;
+    .page {
+        background-color: #bbb5bd;
+        padding: 1px 1px 65px 1px;
     }
-
     .container {
-        border: 3px solid #333;
+        background-color: #3f4045;
+        border: 3px solid beige;
+        border-radius: 30px;
         text-align: left;
         padding: 20px;
         width: 50%;
         margin-left: auto;
         margin-right: auto;
+        margin-top: 70px;
     }
+
+    .top {
+        color: beige;
+        font-weight: bold;
+        left: 50%;
+        width: 20%;
+        padding: 10px;
+        margin: 20px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }        
 
     .content {
         display: grid;
         grid-template-columns: 1fr 1fr;
+        height: 30px;
+    }
+
+    label {
+        background-color: #424b54;
+        border: 1px solid beige;
+        color: beige;
+        font-weight: bold;
+        border-radius: 30px;
+        width: 40%;
+        text-align: center;
+        padding-top: 10px;
+        margin-left: 60px;
+        height: 30px;
+    }
+
+    .box {
+        width: 80%;
+        height: 50px;
+        margin: auto;
+        padding: auto;
+        text-align: center;
+        margin-bottom: 20px;
     }
 
     .btn {
@@ -87,6 +115,19 @@ export default {
         width: 20%;
         margin-left: auto;
         margin-right: auto;
-        margin-top: 50px;
+        margin-top: 10px;
+        font-weight: bold;
+        font-size: 1.2em;
+        background-color: #424b54;
+        border-radius: 30px;
+        color: beige;
+        text-decoration: none;
+        border: 1px solid beige;
+        padding: 10px 20px;
+
+        &:hover {
+        background-color: sandybrown;
+        cursor: pointer;
+      }
     }
 </style>

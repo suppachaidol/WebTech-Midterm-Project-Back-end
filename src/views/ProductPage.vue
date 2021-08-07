@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="page">
     <div class="top">
       <div class="banner" />
 
@@ -7,41 +7,26 @@
         <h1>เครื่องดื่มสุดอร่อย</h1>
       </div>
     </div>
-    
-    <div class="test">
-      <h2>Product table show here</h2>
-    </div>
 
-    <div class="container">
-      <div class="content" v-for="(pro, index) in items" :key="index">
-        <img :src="require(`@/assets/${pro.img}`)">
-        <h3>{{ pro.menu }}</h3>
-      </div>
-    </div>
+    <show-product></show-product>
   </div>
 </template>
 
 <script>
-import DataStore from '@/store/Beverage'
+import ShowProduct from "@/components/ShowProduct"
 export default {
-  data() {
-    return {
-      items: []
-    }
-  },
-  created() {
-    this.fetchData()
-  },
-  methods: {
-    async fetchData() {
-      await DataStore.dispatch("fetchData")
-      this.items = DataStore.getters.prod
-    }
+  components: {
+    ShowProduct,
   }
+
 }
 </script>
 
 <style lang="scss" scoped>
+  .page {
+    background-color: cadetblue;
+  }
+
   .top {
     width: 100%;
     height: 300px;
@@ -57,37 +42,22 @@ export default {
   }
 
   .word {
-    position: absolute;
+    position: relative;
     border: 3px solid wheat;
-    background-color: rgba(0,0,0, 0.4);
+    background-color: rgba(0,0,0, 0.6);
     color: beige;
     font-weight: bold;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -70%);
+    border-radius: 20px;
+    bottom: 50%;
+    transform: translate(50%, -50%);
     width: 50%;
-    height: 10%;
+    height: 25%;
     padding: 10px;
     text-align: center;
   }
 
   h1 {
     font-size: 4em;
-  }
-
-  .test {
-    margin-top: 50px;
-    text-align: center;
-  }
-
-  .container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    align-content: center;
-  }
-
-  .content {
-    text-align: center;
   }
 
 </style>

@@ -1,7 +1,8 @@
 <template>
-  <div>
+  <div class="page">
     <div class="top">
-        <h1>Registration</h1>
+        <h1>สมัครเป็นสมาชิกกับ ChaKaiMook</h1>
+        <h2>เพื่อรับสิทธิประโยชน์มากมาย</h2>
     </div>
       
     <div class="container">
@@ -21,11 +22,13 @@
               <input v-model="form.password" type="password" autocomplete="off">
           </div>
 
-          <div class="btn">
-              <button type="submit">Register</button>
+          <div class="box">
+              <button class="btn" type="submit">ยืนยัน</button>
           </div>
       </form>
     </div>
+
+    <footer />
   </div>
 </template>
 
@@ -60,24 +63,41 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+    .page {
+        background-color: #f5e6e8;
+        padding-top: 50px;
+    }
+
     .top {
         color: #2c3e50;
+        background-color: whitesmoke;
         font-weight: bold;
-        left: 50%;
         width: 50%;
         height: 10%;
-        padding: 10px;
-        margin: 50px;
-        display: block;
         margin-left: auto;
         margin-right: auto;
         text-align: center;
+        border-radius: 30px;
+        border: 3px solid #156064;
+
+        h1 {
+            padding-top: 20px;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            padding-top: 10px;
+            padding-bottom: 20px;
+        }
     }
 
     .container {
-        border: 3px solid #333;
+        background-color: whitesmoke;
+        border: 3px solid #156064;
+        border-radius: 30px;
         text-align: left;
         padding: 20px;
+        margin-top: 50px;
         width: 50%;
         margin-left: auto;
         margin-right: auto;
@@ -86,6 +106,26 @@ export default {
     .content {
         display: grid;
         grid-template-columns: 1fr 1fr;
+        height: 30px;
+    }
+
+    label {
+        background-color: #156064;
+        color: beige;
+        border-radius: 30px;
+        width: 40%;
+        text-align: center;
+        padding-top: 6px;
+        margin-left: 60px
+    }
+
+    .box {
+        width: 80%;
+        height: 50px;
+        margin: auto;
+        padding: auto;
+        text-align: right;
+        margin-bottom: 20px;
     }
 
     .btn {
@@ -93,7 +133,27 @@ export default {
         width: 20%;
         margin-left: auto;
         margin-right: auto;
-        margin-top: 50px;
+        margin-top: 10px;
+        left: 500px;
+        font-weight: bold;
+        font-size: 1.2em;
+        background-color: #156064;
+        border-radius: 30px;
+        color: beige;
+        text-decoration: none;
+        border: 1px solid beige;
+        padding: 10px 20px;
+
+        &:hover {
+        background-color: sandybrown;
+        cursor: pointer;
+      }
+    }
+
+    footer {
+        background-color: #2c3e50;
+        height: 90px;
+        margin-top: 100px;
     }
 
 </style>

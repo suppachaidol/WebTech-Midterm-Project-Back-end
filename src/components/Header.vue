@@ -5,21 +5,23 @@
         ChaKaiMook
       </h1>
     </div>
+
     <div id="nav">
       <router-link class="btn" to="/">หน้าแรก</router-link>
       <router-link class="btn" to="/product">เลือกซื้อ</router-link>
       <router-link class="btn" to="/reward">แลกรางวัล</router-link>
-      <router-link class="btn" to="/leaderboard">กระดานคะแนน</router-link>
-      <router-link class="btn" to="/profile">ข้อมูลผู้ใช้</router-link>
+      <router-link class="btn" v-if="isAdmin()" to="/leaderboard">กระดานคะแนน</router-link>
       <a v-if="!isAuthen()">
         <router-link class="btn in" to="/login">เข้าสู่ระบบ</router-link>
         <router-link class="btn re" to="/register">สมัครสมาชิก</router-link>
       </a>
       <a v-if="isAuthen()">
+        <router-link class="btn" to="/profile">ข้อมูลผู้ใช้</router-link>
         <router-link class="btn out" to="/logout">ออกจากระบบ</router-link>
       </a>
     </div>
     <router-view/>
+
   </div>
 </template>
 
@@ -30,6 +32,17 @@ export default {
   methods: {
     isAuthen() {
       return AuthUser.getters.isAuthen
+    },
+    isAdmin() {
+      if (AuthUser.getters.user.role !== undefined) {
+        if (AuthUser.getters.user.role.name === "Admin") {
+          return true
+        } else {
+          return false
+        }
+      } else {
+        return false
+      }
     }
   }
 }

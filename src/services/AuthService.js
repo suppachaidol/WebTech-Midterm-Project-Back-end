@@ -13,19 +13,26 @@ export default {
     },
 
     getApiHeader() {
-        if (jwt !== "") {
+        if (this.jwt !== undefined && this.jwt !== "") {
             return {
                 headers: {
-                    Authorization: `Bearer ${jwt}`
+                    Authorization: `Bearer ${this.jwt}`
+                }
+            }
+        } else {
+            this.jwt = JSON.parse(localStorage.getItem(auth_key)).jwt
+            return {
+                headers: {
+                    Authorization: `Bearer ${this.jwt}`
                 }
             }
         }
-        return {}
     },
 
     isRoleAuthenticated() {
         return this.isAuthen() && user.role.name === "Authenticated"
     },
+
 
     getUser() {
         return user
@@ -47,6 +54,8 @@ export default {
             let res = await Axios.post(url, body)
             if (res.status === 200) {
                 localStorage.setItem(auth_key, JSON.stringify(res.data))
+                this.jwt = res.data.jwt
+                console.log(this.jwt)
                 return {
                     success: true,
                     user: res.data.user,
@@ -110,6 +119,36 @@ export default {
                     message: "Unknown error: " + e.response.data
                 }
             }
+        }
+    },
+
+    async update({ id, total_points, max_points }) {
+        console.log(id, total_points, max_points)
+        try {
+            // let url = api_endpoint + "/users/" + id
+            let url = `${api_endpoint}/users/${id}`
+            let body = {
+                total_points: total_points,
+                max_points: max_points,
+            }
+            let headers = this.getApiHeader()
+            let res = await Axios.put(url, body, headers)
+            let newData = {
+                jwt: this.jwt,
+                user: res.data
+            }
+            if (res.status === 200) {
+                localStorage.setItem(auth_key, JSON.stringify(newData))
+                return {
+                    success: true,
+                    user: newData.user,
+                    jwt: newData.jwt
+                }
+            } else {
+                console.log("NOT 200", res)
+            }
+        } catch (e) {
+            console.error(e.response)
         }
     }
 }
