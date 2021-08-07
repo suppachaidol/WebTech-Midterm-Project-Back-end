@@ -18,7 +18,9 @@ export default new Vuex.Store({
 
   mutations: {
     fetch(state, { res }) {
+      console.log(res.data)
       state.data = res.data
+      console.log(state.data)
     },
     buy(state, payload) {
       state.data.push(payload)
@@ -28,7 +30,6 @@ export default new Vuex.Store({
   actions: {
     async fetchProduct({ commit }) {
       let res = await Axios.get(api_endpoint + "/products")
-
       commit("fetch", { res })
     },
     async buyItem({ commit }, payload) {

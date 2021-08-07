@@ -1,9 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import Axios from 'axios'
 import AuthService from '@/services/AuthService'
-
-const api_endpoint = process.env.VUE_APP_CHAKAIMOOK_ENDPOINT || "http://localhost:1337"
 
 Vue.use(Vuex)
 
@@ -30,15 +27,6 @@ export default new Vuex.Store({
       state.jwt = ""
       state.isAuthen = false
     },
-    setUpdate(state, payload) {
-      console.log(payload.total_points)
-      console.log(payload.max_points)
-      state.user.total_points = payload.total_points
-      state.user.max_points = payload.max_points
-      console.log(state.user.total_points)
-      console.log(state.user.max_points)
-    }
-    
   },
 
   actions: {
@@ -46,9 +34,6 @@ export default new Vuex.Store({
       let res = await AuthService.login({ email, password })
       console.log(res)
       if (res.success) {
-        console.log(res)
-        console.log(res.jwt)
-        console.log(res.user)
         commit("loginSuccess", res)
       }
       return res
@@ -60,27 +45,17 @@ export default new Vuex.Store({
     async register({ commit }, { username, email, password }) {
       let res = await AuthService.register({ username, email, password })
       if (res.success) {
-        commit("loginSuccess", res.user, res.jwt)
+        commit("loginSuccess", res)
       }
       return res
     },
-    async updateGet({ commit }, payload) {
-      let url = api_endpoint + "/users/" + payload.id
-      let body = {
-        total_points: payload.total_points,
-        max_points: payload.max_points
+    async update({ commit }, { id, total_points, max_points }) {
+      let res = await AuthService.update({ id, total_points, max_points })
+      console.log(res)
+      if (res.success) {
+        commit("loginSuccess", res)
       }
-      try {
-        let headers = AuthService.getApiHeader()
-        let res = await Axios.put(url, body, headers)
-        console.log(res)
-        if (res.status === 200) {
-          commit("setUpdate", res.data)
-        }
-        return res
-      } catch (e) {
-        console.error(e.response.data.message)
-      }
+      return res
     },
   },
 

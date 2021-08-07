@@ -1,20 +1,24 @@
 <template>
   <div>
     <div class="container">
-      <div class="content" v-for="(pro, index) in products" :key="index">
-        <img :src="api_endpoint + pro.image.url"><br>
-        <h2>{{ pro.name }}</h2>
-        <div class="show">
-            <label>ราคา: </label>
-            <h3>{{ pro.price }}</h3>
-        </div>
+      <div v-for="(pro, index) in products" :key="index">
+        <div v-if="pro.name !== user">
+          <div class="content">
+            <img :src="api_endpoint + pro.image.url">
+            <h2>{{ pro.name }}</h2>
+            <div class="show">
+              <label>ราคา: </label>
+              <h3>{{ pro.price }}</h3>
+            </div>
 
-        <div class="show">
-            <label>แต้มที่ได้: </label>
-            <h3>{{ pro.points }}</h3>
+            <div class="show">
+              <label>แต้มที่ได้: </label>
+              <h3>{{ pro.points }}</h3>
+            </div>
+            
+            <button class="btn" v-if="isAuthen()" @click="buyItem(pro)">ซื้อ</button>
+          </div>
         </div>
-        
-        <button class="btn" v-if="isAuthen()" @click="buyItem(pro)">ซื้อ</button>
       </div>
     </div>
   </div>
@@ -29,12 +33,13 @@ export default {
     return {
       products: [],
       api_endpoint: process.env.VUE_APP_CHAKAIMOOK_ENDPOINT || "http://localhost:1337",
-      user: {}
+      user: "",
     }
   },
   created() {
     this.fetchProduct()
     this.isAuthen()
+    this.user = AuthUser.getters.user.username
   },
   methods: {
     async fetchProduct() {
@@ -60,7 +65,7 @@ export default {
 
       console.log(AuthUser.getters.user.total_points)
 
-      await AuthUser.dispatch('updateGet', payload1)
+      await AuthUser.dispatch('update', payload1)
 
       let res = await BeverageStore.dispatch('buyItem', payload2)
       if (res.success) {
@@ -86,6 +91,7 @@ export default {
     border: bisque solid 5px;
     border-radius: 50px;
     padding: 20px;
+    margin: 50px;
   }
 
   img {
