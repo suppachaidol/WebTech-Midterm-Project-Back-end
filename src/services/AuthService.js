@@ -29,6 +29,14 @@ export default {
         return {}
     },
 
+<<<<<<< HEAD
+=======
+    isRoleAuthenticated() {
+        return this.isAuthen() && user.role.name === "Authenticated"
+    },
+
+
+>>>>>>> e9614f3101a92760d2955b4bb166ebfeed312d6f
     getUser() {
         return user
     },
