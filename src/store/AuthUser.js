@@ -20,9 +20,9 @@ export default new Vuex.Store({
   state: initialState,
 
   mutations: {
-    loginSuccess(state, user, jwt) {
-      state.user = user
-      state.jwt = jwt
+    loginSuccess(state, payload) {
+      state.user = payload.user
+      state.jwt = payload.jwt
       state.isAuthen = true 
     },
     logoutSuccess(state) {

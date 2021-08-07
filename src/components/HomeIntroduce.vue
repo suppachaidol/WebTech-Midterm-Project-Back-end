@@ -1,6 +1,6 @@
-<template>
+ <!--<template>
 <div>
-    <!-- <div class="home_intro_one">
+    <div class="home_intro_one">
         <div>
             <img :src="require(`@/assets/${products[1].img}`)">
         </div>

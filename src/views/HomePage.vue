@@ -4,9 +4,9 @@
     
     <h2 class="intro_menu">เมนูแนะนำ</h2>
     <br>
-    <home-introduce></home-introduce>
+    <!--<home-introduce></home-introduce>
 
-    <!-- <div class="banner">
+     <div class="banner">
       <img class="image" src="@/assets/banner.jpg">
     </div>
 
@@ -28,12 +28,12 @@
 
 <script>
 import HomeImg from '@/components/HomeImg'
-import HomeIntroduce from '@/components/HomeIntroduce.vue'
+//import HomeIntroduce from '@/components/HomeIntroduce.vue'
 
 export default {
   components:{
     HomeImg,
-    HomeIntroduce
+    //HomeIntroduce
     
     
   }
