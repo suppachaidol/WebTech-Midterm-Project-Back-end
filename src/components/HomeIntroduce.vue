@@ -1,6 +1,6 @@
 <template>
 <div>
-    <div class="home_intro_one">
+    <!-- <div class="home_intro_one">
         <div>
             <img :src="require(`@/assets/${items[1].img}`)">
         </div>
@@ -28,7 +28,7 @@
             <label>ราคา: </label>
             <br>
             <label>แต้มที่ได้:</label>
-        </div>
+        </div> -->
              
 
        
