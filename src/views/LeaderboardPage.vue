@@ -7,7 +7,35 @@
 </template>
 
 <script>
+import AuthUser from "@/store/AuthUser"
+
 export default {
+  mounted() {
+    if (!this.isAuthen()) {
+      this.$swal("Restricted Area", "You have no permission", "warning")
+      this.$router.push("/")
+    }
+    if (!this.isAdmin()) {
+      this.$swal("Restricted Area", "You have no permission", "warning")
+      this.$router.push("/")
+    }
+  },
+  methods: {
+    isAuthen() {
+      return AuthUser.getters.isAuthen
+    },
+    isAdmin() {
+      if (AuthUser.getters.user.role !== undefined) {
+        if (AuthUser.getters.user.role.name === "Admin") {
+          return true
+        } else {
+          return false
+        }
+      } else {
+        return false
+      }
+    }
+  }
 
 }
 </script>

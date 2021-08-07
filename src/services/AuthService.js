@@ -13,18 +13,20 @@ export default {
     },
 
     getApiHeader() {
-        if (jwt !== "") {
+        if (this.jwt === undefined) {
             return {
                 headers: {
-                    Authorization: `Bearer ${jwt}`
+                    Authorization: `Bearer ${localStorage.getItem(jwt)}`
+                }
+            }
+        } else if (this.jwt !== undefined) {
+            return {
+                headers: {
+                    Authorization: `Bearer ${this.jwt}`
                 }
             }
         }
         return {}
-    },
-
-    isRoleAuthenticated() {
-        return this.isAuthen() && user.role.name === "Authenticated"
     },
 
     getUser() {
@@ -47,6 +49,8 @@ export default {
             let res = await Axios.post(url, body)
             if (res.status === 200) {
                 localStorage.setItem(auth_key, JSON.stringify(res.data))
+                this.jwt = res.data.jwt
+                console.log(this.jwt)
                 return {
                     success: true,
                     user: res.data.user,
@@ -111,5 +115,5 @@ export default {
                 }
             }
         }
-    }
+    },
 }
