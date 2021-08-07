@@ -2,14 +2,14 @@
 <div>
     <div class="home_intro_one">
         <div>
-            <img :src="require(`@/assets/${items[1].img}`)">
+            <img :src="require(`@/assets/${products[1].img}`)">
         </div>
         <div class="intro_lable_menu">
-            <label>ชื่อสินค้า: {{items[1].menu}}</label>
+            <label>ชื่อสินค้า: {{products[1].name}}</label>
             <br>
-            <label >ราคา: </label>
+            <label >ราคา: {{products[1].price}}</label>
             <br>
-            <label>แต้มที่ได้: </label>
+            <label>แต้มที่ได้: {{products[1].ponit}}</label>
         </div>
         
         
@@ -20,14 +20,14 @@
     <br>
     <div class="home_intro_two">
         <div>
-            <img :src="require(`@/assets/${items[0].img}`)">
+            <img :src="require(`@/assets/${products[2].img}`)">
         </div>
         <div class="intro_lable_menu">
-            <label>ชื่อสินค้า: {{items[0].menu}}</label>
+            <label>ชื่อสินค้า: {{products[2].name}}</label>
             <br>
-            <label>ราคา: </label>
+            <label>ราคา: {{products[2].price}}</label>
             <br>
-            <label>แต้มที่ได้:</label>
+            <label>แต้มที่ได้: {{products[2].ponits}}</label>
         </div>
              
 
@@ -40,25 +40,24 @@
 </template>
 
 <script>
-import Beverage from '@/store/Beverage'
+import BeverageStore from '@/store/Beverage'
 export default {
     data(){
         return{
-            items:[]
+            products:[]
 
         }
     },
     created(){
-        this.fetchData()
-        console.log(this.items)
+        this.fetchProduct()
+        console.log(this.products)
 
     },
     methods:{
-        async fetchData() {
-            await Beverage.dispatch("fetchData")
-            this.items = Beverage.getters.prod
-            
-        }
+        async fetchProduct() {
+            await BeverageStore.dispatch("fetchProduct")
+            this.products = BeverageStore.getters.prod
+        },
     }
     
 
