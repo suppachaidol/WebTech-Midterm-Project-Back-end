@@ -1,18 +1,20 @@
 <template>
   <div>
-    <div class="banner"></div>
-    <div class="word">
-      <h1>รางวัลสุดพิเศษ</h1>
+    <div class="bannerReward"></div>
+    <div class="wordReward">
+      <h1 class="reward">รางวัลสุดพิเศษ</h1>
     </div>
 
     <div>
-      <table>
+      <table class="styled-table">
         <thead>
           <tr>
             <th>รางวัล</th>
             <th>คงเหลือ</th>
             <th>คะแนนในการแลก</th>
             <th v-if="isAuthen()">แลกของรางวัล</th>
+            <th v-if="isAdmin()">แก้ไข</th>
+            <th v-if="isAdmin()">ลบ</th>
           </tr>
         </thead>
         <tbody>
@@ -76,7 +78,7 @@ export default {
     isAuthen() {
         return AuthUser.getters.isAuthen
     },
-
+    
     isAdmin() {
       if (AuthUser.getters.user.role !== undefined) {
         if (AuthUser.getters.user.role.name === "Admin") {
@@ -88,20 +90,21 @@ export default {
         return false
       }
     }
+    
   
   },
 };
 </script>
 
-<style>
-.banner {
+<style lang="scss" scoped>
+.bannerReward {
   background-image: url("../assets/gift.jpg");
   background-position: center;
   width: 100%;
   height: 300px;
   filter: blur(5px);
 }
-.word {
+.wordReward {
   position: absolute;
   border: 3px solid skyblue;
   background-color: rgba(0, 0, 0, 0.4);
@@ -115,27 +118,43 @@ export default {
   padding: 10px;
   text-align: center;
 }
-h1 {
+.reward {
   font-size: 4em;
 }
-
-th {
-  padding: 40px;
-  border: 2px solid black;
-}
-td {
-  padding: 10px;
-  text-align: center;
-  border: 2px solid black;
-}
-table {
+.styled-table {
   width: 80%;
   border-collapse: collapse;
   margin-top: 30px;
   margin-bottom: 30px;
   margin-left: auto;
   margin-right: auto;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
+.styled-table thead tr {
+    background-color: skyblue;
+    color: black;
+    text-align: left;
+}
+.styled-table th, .styled-table td {
+    padding: 12px 15px;
+    text-align: center;
+}
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid skyblue;
+}
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color:skyblue;
+}
+
 .edit, .delete, .get {
   text-decoration-line: none;
 }
@@ -145,4 +164,5 @@ table {
   padding: 20px;
   text-decoration-line: none;
 }
+
 </style>

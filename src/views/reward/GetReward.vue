@@ -65,17 +65,24 @@ export default {
             }
             console.log(user.total_points)
             if(payload.total_points >= 0){
-                let res = await RewardStore.dispatch("getReward", payload)
-
-                if(res.success){
-                    this.$router.push("/reward")
+                if(this.form.quantity > 0){
+                    let res = await RewardStore.dispatch("getReward", payload)
+                    if(res.success){
+                        this.$swal("แลกของรางวัลสำเร็จ","","success")
+                        this.$router.push("/reward")
+                    }
+                    else{
+                        this.$swal("Get Failed", res.message,"error")
+                    }
                 }
                 else{
-                    this.$swal("Get Failed", res.message,"error")
+                    this.$swal("ของรางวัลไม่เพียงพอ","","error")
+                    this.$router.push("/reward")
                 }
             }
             else{
-                this.$swal("Points not enough")
+                this.$swal("แต้มคงเหลือไม่เพียงพอ","","error")
+                this.$router.push("/reward")
             }
         },
     }
