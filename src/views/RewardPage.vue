@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="banner"></div>
-    <div class="word">
+    <div class="banner_reward"></div>
+    <div class="word_reward">
       <h1>รางวัลสุดพิเศษ</h1>
     </div>
 
@@ -94,14 +94,14 @@ export default {
 </script>
 
 <style>
-.banner {
+.banner_reward {
   background-image: url("../assets/gift.jpg");
   background-position: center;
   width: 100%;
   height: 300px;
   filter: blur(5px);
 }
-.word {
+.word_reward{
   position: absolute;
   border: 3px solid skyblue;
   background-color: rgba(0, 0, 0, 0.4);
@@ -114,6 +114,7 @@ export default {
   height: 10%;
   padding: 10px;
   text-align: center;
+  border-radius: 10px;
 }
 h1 {
   font-size: 4em;

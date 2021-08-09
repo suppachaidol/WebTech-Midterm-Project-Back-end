@@ -1,9 +1,9 @@
 <template>
   <div class="page">
     <div class="top">
-      <div class="banner" />
+      <div class="banner_product" />
 
-      <div class="word">
+      <div class="word_product">
         <h1>เครื่องดื่มสุดอร่อย</h1>
       </div>
     </div>
@@ -33,7 +33,7 @@ export default {
     overflow: hidden
   }
 
-  .banner {
+  .banner_product {
     background-image: url('../assets/drink.jpg');
     background-position: center;
     width: 100%;
@@ -41,7 +41,7 @@ export default {
     filter: blur(5px);
   }
 
-  .word {
+  .word_product {
     position: relative;
     border: 3px solid wheat;
     background-color: rgba(0,0,0, 0.6);
@@ -54,10 +54,11 @@ export default {
     height: 25%;
     padding: 10px;
     text-align: center;
+    h1 {
+    font-size: 4em;
+    }
   }
 
-  h1 {
-    font-size: 4em;
-  }
+  
 
 </style>

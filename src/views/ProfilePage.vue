@@ -20,6 +20,7 @@ export default {
 h1.profile{
   text-align: center;
   margin: 50px;
+  font-size: 70px;
   font-family: 'Trebuchet MS','sans-serif';
 }
 </style>
