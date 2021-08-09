@@ -81,9 +81,17 @@ export default {
 
 <style lang="scss" scoped>
 .editReward{
+    border: 3px solid wheat;
+    background-color: rgba(0,0,0, 0.6);
+    color: beige;
+    font-weight: bold;
+    border-radius: 20px;
+    width: 50%;
+    padding: 10px;
     text-align: center;
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 20px;
-    font-size: 2em;
 }
 input{
     margin-left: 5px;
@@ -91,18 +99,41 @@ input{
 }
 .editform{
     text-align: center;
-    border: 3px solid #333;
+    border: tomato solid 5px;
     padding: 20px;
     width: 50%;
     margin-left: auto;
     margin-right: auto;
     margin-top: 20px;
+    font-size: 1.2em;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    border-radius: 30px;
 }
 .edit{
     margin-top: 20px;
     font-size: 1em;
+    font-weight: bold;
+    background-color: sandybrown;
+    color: beige;
+    text-decoration: none;
+    border-radius: 28px;
+    border: 1px solid beige;
+    padding: 10px 20px;
+    text-align: center;
 }
 label, input{
     font-size: 1.2em;
 }
+input {
+        background-color: beige;
+        border: 1px solid beige;
+        color: black;
+        font-weight: bold;
+        border-radius: 20px;
+        width: 40%;
+        text-align: center;
+        padding-top: 10px;
+        margin-left: 60px;
+        height: 30px;
+    }
 </style>

@@ -41,7 +41,7 @@
                       <td v-if="checkUser(his.name)">{{his.name}}</td>
                       <td v-if="checkUser(his.name)">{{his.reward_name}}</td>
                       <td v-if="checkUser(his.name)">{{his.points_use}}</td>
-                      <td v-if="checkUser(his.name)">{{his.created_at.slice(0,10)}}</td>
+                      <td v-if="checkUser(his.name)">{{his.created_at}}</td>
                   </tr>
               </tbody>
           </table>
