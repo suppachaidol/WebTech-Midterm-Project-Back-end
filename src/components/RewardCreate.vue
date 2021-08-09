@@ -105,6 +105,9 @@ export default {
     padding: 10px 20px;
     text-align: center;
 }
+label, input{
+    font-size: 1.2em;
+}
 input {
         background-color: beige;
         border: 1px solid beige;

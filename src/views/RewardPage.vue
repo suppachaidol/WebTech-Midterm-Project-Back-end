@@ -44,6 +44,7 @@
           </tr>
         </tbody>
       </table>
+      <br>
     </div>
     <router-link class="add" v-if="isAdmin()" to="/addreward"
       >เพิ่มของรางวัล</router-link
@@ -159,10 +160,19 @@ export default {
   text-decoration-line: none;
 }
 .add {
-  margin-left: 45%;
-  font-size: 1.5em;
+  margin-left: 46%;
+  margin-top: 20px;
+  font-size: 1.3em;
   padding: 20px;
   text-decoration-line: none;
+  background-color:skyblue;
+  color: black;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  border-radius: 20%;
+}
+.add:hover{
+  background-color: beige;
+  cursor: pointer;
 }
 
 </style>
