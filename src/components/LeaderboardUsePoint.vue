@@ -13,7 +13,7 @@
       
       <table>
           <thead>
-              <tr>
+              <tr class="thead_ues">
                   <td>Username</td>
                   <td>ชื่อของที่แลก</td>
                   <td>แต้มที่ใช้</td>
@@ -116,21 +116,24 @@ export default {
 .input_time_use{
     width: 60px;
 }
-.find_use{
+.find_use,.restore_use{
     padding: 5px;
     margin: 5px;
+    background-color:whitesmoke; 
+    color:black; 
+    border: 2px solid #694306;
+    border-radius:5px ;
 }
-.restore_use{
-    padding: 5px;
-    margin: 5px;
+.find_use:hover,.restore_use:hover{
+    background-color: #694306;
+    color: white;
 
 }
 .form_find_use{
-    flex-flow: row wrap;
-    display: flex;
-    align-content: center;
-    /* justify-content: space-evenly; */
     margin: 0px 0px 0px 560px;
 }
-
+.thead_ues{
+    color: whitesmoke;
+    background-color: #694306;
+}
 </style>

@@ -12,7 +12,7 @@
       
       <table>
           <thead>
-              <tr>
+              <tr class="thead_get">
                   <td>Username</td>
                   <td>แต้มที่ได้</td>
                   <td>เวลาที่ได้แต้ม (ปี-เดือน-วัน ชั่วโมง:นาที)</td>
@@ -115,17 +115,25 @@ export default {
 .input_time_get{
     width: 60px;
 }
-.find_get{
+.find_get,.restore_get{
     padding: 5px;
     margin: 5px;
+    background-color:whitesmoke; 
+    color:black; 
+    border: 2px solid #694306;
+    border-radius:5px ;
 }
-.restore_get{
-    padding: 5px;
-    margin: 5px;
+.find_get:hover,.restore_get:hover{
+    background-color: #694306;
+    color: white;
 
 }
 .form_find_get{
     
     margin: 0px 0px 0px 560px;
+}
+.thead_get{
+    color: whitesmoke;
+    background-color: #694306;
 }
 </style>

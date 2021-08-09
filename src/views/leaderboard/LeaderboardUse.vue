@@ -105,8 +105,8 @@ h1 {
   font-family: monospace;
   font-size: 20px;
   font-weight: bold;
-  background-color: #2c3e50;
-  color: white;
+  background-color: #694306;
+  color: #fff3e0;
   /* border: 2px solid black; */
   
   text-decoration: none;
@@ -116,8 +116,8 @@ h1 {
 }
 .router_get:hover ,.router_get:active{
   box-shadow: 4px 9px #888888;
-  background-color:#feb236;
+  background-color:#fdbc54;
 
-  color: #2c3e50;
+  color: #694306;
 }
 </style>

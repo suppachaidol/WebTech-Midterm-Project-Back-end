@@ -134,5 +134,10 @@ export default {
     padding: 10px 20px;
     text-align: center;
     margin-top: 20px;
+    &:hover{
+      cursor: pointer;
+      color: #333;
+      background-color: beige;
+    }
   }
 </style>
