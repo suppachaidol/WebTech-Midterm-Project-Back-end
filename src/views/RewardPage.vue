@@ -1,18 +1,20 @@
 <template>
   <div>
-    <div class="banner_reward"></div>
-    <div class="word_reward">
-      <h1>รางวัลสุดพิเศษ</h1>
+    <div class="bannerReward"></div>
+    <div class="wordReward">
+      <h1 class="reward">รางวัลสุดพิเศษ</h1>
     </div>
 
     <div>
-      <table>
+      <table class="styled-table">
         <thead>
-          <tr class="thead_R">
+          <tr>
             <th>รางวัล</th>
             <th>คงเหลือ</th>
             <th>คะแนนในการแลก</th>
             <th v-if="isAuthen()">แลกของรางวัล</th>
+            <th v-if="isAdmin()">แก้ไข</th>
+            <th v-if="isAdmin()">ลบ</th>
           </tr>
         </thead>
         <tbody>
@@ -42,11 +44,11 @@
           </tr>
         </tbody>
       </table>
+      <br>
     </div>
-    <div class="router_add">
-      <router-link class="add" v-if="isAdmin()" to="/addreward">เพิ่มของรางวัล</router-link>
-    </div>
-    
+    <router-link class="add" v-if="isAdmin()" to="/addreward"
+      >เพิ่มของรางวัล</router-link
+    >
   </div>
 </template>
 
@@ -77,7 +79,7 @@ export default {
     isAuthen() {
         return AuthUser.getters.isAuthen
     },
-
+    
     isAdmin() {
       if (AuthUser.getters.user.role !== undefined) {
         if (AuthUser.getters.user.role.name === "Admin") {
@@ -89,24 +91,21 @@ export default {
         return false
       }
     }
+    
   
   },
 };
 </script>
 
-<style>
-.thead_R{
-  background-color: rgb(25, 25, 202) ;
-  color:rgb(255, 255, 255);
-}
-.banner_reward {
+<style lang="scss" scoped>
+.bannerReward {
   background-image: url("../assets/gift.jpg");
   background-position: center;
   width: 100%;
   height: 300px;
   filter: blur(5px);
 }
-.word_reward{
+.wordReward {
   position: absolute;
   border: 3px solid skyblue;
   background-color: rgba(0, 0, 0, 0.4);
@@ -119,66 +118,61 @@ export default {
   height: 10%;
   padding: 10px;
   text-align: center;
-  border-radius: 10px;
 }
-h1 {
+.reward {
   font-size: 4em;
 }
-
-th {
-  padding: 40px;
-  border: 2px solid black;
-}
-td {
-  padding: 10px;
-  text-align: center;
-  border: 2px solid black;
-}
-table {
+.styled-table {
   width: 80%;
   border-collapse: collapse;
   margin-top: 30px;
   margin-bottom: 30px;
   margin-left: auto;
   margin-right: auto;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
+.styled-table thead tr {
+    background-color: skyblue;
+    color: black;
+    text-align: left;
+}
+.styled-table th, .styled-table td {
+    padding: 12px 15px;
+    text-align: center;
+}
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid skyblue;
+}
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color:skyblue;
+}
+
 .edit, .delete, .get {
   text-decoration-line: none;
-  color:blue;
-
 }
-.edit:hover, .delete:hover, .get:hover 
-{
- color: rgb(103, 4, 216); 
-}
-/* .add {
-  margin-left: 45%;
-  font-size: 1.5em;
+.add {
+  margin-left: 46%;
+  margin-top: 20px;
+  font-size: 1.3em;
   padding: 20px;
   text-decoration-line: none;
-  
-} */
-.add{
-  display: inline-block;
-  margin: 0px 0px 50px 0px;
-  text-decoration-line: none;
-    font-size: 1.5em;
-    padding: 5px;
-    /* margin: 20px 0px 0px 500px; */
-    background-color:whitesmoke; 
-    color:black; 
-    border: 2px solid rgb(31, 31, 209);
-    border-radius:5px ;
+  background-color:skyblue;
+  color: black;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  border-radius: 20%;
 }
 .add:hover{
-    background-color: rgb(55, 55, 255);
-    color: white;
+  background-color: beige;
+  cursor: pointer;
+}
 
-}
-.router_add{
-  flex-flow: row wrap;
-    display: flex;
-    align-content: center;
-    justify-content: space-evenly;
-}
 </style>

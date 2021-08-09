@@ -27,20 +27,29 @@ export default new Vuex.Store({
         const historychange = state.history.map(item => {
             const updated = new Date(item.updated_at)
             let date=updated.getDate()
-            let month=updated.getMonth()
+            let month=updated.getMonth()+1
+            let hours=updated.getHours()
+            let minutes=updated.getMinutes()
             
-            if(updated.getDate()<10){
-                date="0"+updated.getDate()
+            if(+date<10 || +date===0){
+                date="0"+date
             }
-            if(updated.getMonth()+1<10){
-                let mon=updated.getMonth()+1
-                month="0"+mon
+            if(+month<10 || +month===0){
+                // let mon=updated.getMonth()+1
+                month="0"+month
+            }
+            if(+hours<10 ||+hours===0){
+                hours="0"+hours
+            }
+            if(+minutes<10||+minutes===0){
+                minutes="0"+minutes
+               
             }
             const getHistory = {
                 name : item.name,
                 point : item.get_points,
                 date : `${updated.getFullYear()}-${month}-${date}`,
-                time: `${updated.getHours()}:${updated.getMinutes()}`
+                time: `${hours}:${minutes}`
             }
             return getHistory
         })
@@ -54,6 +63,7 @@ export default new Vuex.Store({
         for(let i=0;i<state.keepHistory.length;i++){
             // const findDay=payload.date+" "+payload.time
             // console.log(findDay)
+            if(payload.key===0){
             if(state.keepHistory[i].date===payload.date){
                 if(state.keepHistory[i].time===payload.time){
                     state.findkeep[count]=state.keepHistory[i]
@@ -61,6 +71,15 @@ export default new Vuex.Store({
                 }
                 
             }
+        }
+        else if(payload.key===1){
+            if(state.keepHistory[i].date===payload.date){
+                    state.findkeep[count]=state.keepHistory[i]
+                    count++;
+                
+                
+            }
+        }
         }
       },
       sort(state,keysort){
@@ -90,7 +109,8 @@ export default new Vuex.Store({
       findDate({commit},payload){
           let data={
               date: payload.day,
-              time: payload.time    
+              time: payload.time,  
+              key:  payload.key
             }
 
           commit("find",data)

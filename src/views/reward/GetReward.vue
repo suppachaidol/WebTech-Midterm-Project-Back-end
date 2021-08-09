@@ -2,18 +2,18 @@
 <div>
     <h1 class="getreward">แลกของรางวัล</h1>
       <div class="getform">
-        <div>
-            <label class="la1" for="name">ของรางวัล</label>
+        <div class="la1">
+            <label for="name">ของรางวัล</label>
             {{form.name}}
         </div>
 
-        <div>
-            <label class="la2" for="quantity">จำนวนคงเหลือ</label>
+        <div class="la2">
+            <label for="quantity">จำนวนคงเหลือ</label>
             {{form.quantity}}
         </div>
 
-        <div>
-            <label class="la3" for="points_use">คะแนนในการแลก</label>
+        <div class="la3">
+            <label for="points_use">คะแนนในการแลก</label>
             {{form.points_use}}
         </div>
 
@@ -65,17 +65,24 @@ export default {
             }
             console.log(user.total_points)
             if(payload.total_points >= 0){
-                let res = await RewardStore.dispatch("getReward", payload)
-
-                if(res.success){
-                    this.$router.push("/reward")
+                if(this.form.quantity > 0){
+                    let res = await RewardStore.dispatch("getReward", payload)
+                    if(res.success){
+                        this.$swal("แลกของรางวัลสำเร็จ","","success")
+                        this.$router.push("/reward")
+                    }
+                    else{
+                        this.$swal("Get Failed", res.message,"error")
+                    }
                 }
                 else{
-                    this.$swal("Get Failed", res.message,"error")
+                    this.$swal("ของรางวัลไม่เพียงพอ","","error")
+                    this.$router.push("/reward")
                 }
             }
             else{
-                this.$swal("Points not enough")
+                this.$swal("แต้มคงเหลือไม่เพียงพอ","","error")
+                this.$router.push("/reward")
             }
         },
     }
@@ -85,26 +92,57 @@ export default {
 
 <style lang="scss" scoped>
 .getreward{
+    border: 3px solid wheat;
+    background-color: rgba(0,0,0, 0.6);
+    color: beige;
+    font-weight: bold;
+    border-radius: 20px;
+    width: 50%;
+    padding: 10px;
     text-align: center;
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 20px;
-    font-size: 2em;
 }
 .getform{
     text-align: center;
-    border: 3px solid #333;
+    border: tomato solid 5px;
     padding: 20px;
     width: 50%;
     margin-left: auto;
     margin-right: auto;
     margin-top: 20px;
     font-size: 1.2em;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    border-radius: 30px;
 }
 .la1, .la2, .la3{
     margin-top: 20px;
+    font-size: 1.3em;
 }
 .get{
     margin-top: 20px;
     font-size: 1em;
+    font-weight: bold;
+    background-color: sandybrown;
+    color: beige;
+    text-decoration: none;
+    border-radius: 28px;
+    border: 1px solid beige;
+    padding: 10px 20px;
+    text-align: center;
 }
+input {
+        background-color: beige;
+        border: 1px solid beige;
+        color: black;
+        font-weight: bold;
+        border-radius: 20px;
+        width: 40%;
+        text-align: center;
+        padding-top: 10px;
+        margin-left: 60px;
+        height: 30px;
+    }
 
 </style>

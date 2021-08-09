@@ -23,7 +23,7 @@ export default new Vuex.Store({
       console.log(state.data)
     },
     buy(state, payload) {
-      state.data.push(payload)
+      //state.data.push(payload)
     },
   },
 

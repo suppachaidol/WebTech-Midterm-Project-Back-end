@@ -39,6 +39,7 @@ export default {
             form:{
                 day:"",
                 time:"",
+                key:""
             },
             history:[],
             history_change_date:[],
@@ -54,6 +55,7 @@ export default {
         async fetchHistory(){
             await GetHistoriesStore.dispatch("fetchHistory")
             await GetHistoriesStore.dispatch("getHistory")
+            
             this.history = GetHistoriesStore.getters.history
             GetHistoriesStore.dispatch("sortPoint","0")
             this.history_change_date=GetHistoriesStore.getters.keepHistory     
@@ -61,6 +63,7 @@ export default {
         async find(){
 
             if(this.form.day!== "" && this.form.time!== ""){
+                this.form.key=0
             GetHistoriesStore.dispatch("findDate",this.form)
             GetHistoriesStore.dispatch("sortPoint","1")
             console.log(GetHistoriesStore.getters.findkeep)
@@ -80,14 +83,24 @@ export default {
 
             }
             else if(this.form.day!== ""&&this.form.time===""){
-                this.$swal("Find Fail", "กรุณาใส่เวลาที่ต้องการค้นหา", "error")
+                this.form.key=1
+                 GetHistoriesStore.dispatch("findDate",this.form)
+                GetHistoriesStore.dispatch("sortPoint","1")
+                console.log(GetHistoriesStore.getters.findkeep)
+                if(GetHistoriesStore.getters.findkeep.length===0){
+                    this.$swal("Find Fail", "ไม่พบวันที่ที่คุณค้นหา", "error")
+                }
+                else{
+                    this.history_change_date=GetHistoriesStore.getters.findkeep
+                }
             }
             else if(this.form.day==="" &&this.form.time===""){
-                this.$swal("Find Fail", "กรุณาใส่วันที่และเวลาที่ต้องการค้นหา", "error")
+                this.$swal("Find Fail", "กรุณาใส่วันที่และเวลาหรือวันที่ที่ต้องการค้นหา", "error")
             }
             this.form={
                 day:"",
                 time:"",
+                key:""
             }
             
             
@@ -112,9 +125,6 @@ export default {
     width: 200px;
     /* margin: 20px 0px 0px 250px; */
 }
-.input_time_get{
-    width: 60px;
-}
 .find_get,.restore_get{
     padding: 5px;
     margin: 5px;
@@ -135,5 +145,22 @@ export default {
 .thead_get{
     color: whitesmoke;
     background-color: #694306;
+}
+th {
+  padding: 40px;
+  border: 2px solid black;
+}
+td {
+  padding: 10px;
+  text-align: center;
+  border: 2px solid black;
+}
+table {
+  width: 80%;
+  border-collapse: collapse;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left: auto;
+  margin-right: auto;
 }
 </style>

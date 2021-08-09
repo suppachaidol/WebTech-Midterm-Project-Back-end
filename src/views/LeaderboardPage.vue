@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="top_leaderboard">
+      <div class="banner_leaderboard" />
       <div class="word_leaderboard">
       <h1>Leaderboard</h1>
     </div>
@@ -24,7 +25,6 @@ import AuthUser from "@/store/AuthUser"
 import LeaderboardGetPoint from '@/components/LeaderboardGetPoint.vue'
 export default {
   components:{
-
     LeaderboardGetPoint
     
   },
@@ -54,7 +54,6 @@ export default {
       }
     }
   }
-
 }
 </script>
 
@@ -69,7 +68,6 @@ export default {
     display: flex;
     align-content: center;
     justify-content: space-evenly;
-
   }
 .router_use:link, .router_use:visited{
   /* box-shadow: 4px 6px #888888; */
@@ -91,7 +89,6 @@ export default {
 .router_use:hover ,.router_use:active{
   box-shadow: 4px 9px #888888;
   background-color:#fdbc54;
-
   color: #694306;
 }
 .top_leaderboard {
@@ -99,7 +96,7 @@ export default {
   background-position: center;
   width: 100%;
   height: 300px;
-  filter: blur(5px);
+  
 }
 .word_leaderboard{
   position: absolute;
@@ -119,5 +116,11 @@ export default {
 h1 {
   font-size: 4em;
 }
-
+.banner_leaderboard {
+  background-image: url("../assets/banner.jpg");
+  background-position: center;
+  width: 100%;
+  height: 300px;
+  filter: blur(5px);
+}
 </style>

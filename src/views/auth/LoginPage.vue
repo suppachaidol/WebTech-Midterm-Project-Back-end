@@ -8,7 +8,7 @@
         <form @submit.prevent="login">
             <div class="content">
                 <label class="lable_login" for="email">Email</label>
-                <input v-model="form.email" type="text" placeholder="email@pokedex.org" autocomplete="off">
+                <input v-model="form.email" type="text" placeholder="email@chakaimook.org" autocomplete="off">
             </div>
 
             <div class="content">

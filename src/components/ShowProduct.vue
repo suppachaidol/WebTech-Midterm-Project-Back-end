@@ -84,7 +84,7 @@ export default {
     flex-flow: row wrap;
     display: flex;
     align-content: center;
-    justify-content: space-evenly;
+    //justify-content: space-evenly;
   }
 
   .content {
@@ -106,7 +106,7 @@ export default {
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-content: left;
-    width: 50%;
+    width: 80%;
     padding: auto;
     margin: auto;
 

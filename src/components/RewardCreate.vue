@@ -65,8 +65,8 @@ export default {
 <style lang="scss" scoped>
 
 .addreward{
-    border: 3px solid tomato;
-    background-color: rgb(238, 108, 85);
+    border: 3px solid wheat;
+    background-color: rgba(0,0,0, 0.6);
     color: beige;
     font-weight: bold;
     border-radius: 20px;
@@ -104,6 +104,9 @@ export default {
     border: 1px solid beige;
     padding: 10px 20px;
     text-align: center;
+}
+label, input{
+    font-size: 1.2em;
 }
 input {
         background-color: beige;
