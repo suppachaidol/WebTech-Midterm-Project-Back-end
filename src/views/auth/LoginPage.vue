@@ -7,12 +7,12 @@
 
         <form @submit.prevent="login">
             <div class="content">
-                <label for="email">Email</label>
+                <label class="lable_login" for="email">Email</label>
                 <input v-model="form.email" type="text" placeholder="email@pokedex.org" autocomplete="off">
             </div>
 
             <div class="content">
-                <label for="password">Password</label>
+                <label class="lable_login" for="password">Password</label>
                 <input v-model="form.password" type="password" autocomplete="off">
             </div>
 
@@ -67,55 +67,72 @@ export default {
         margin-left: auto;
         margin-right: auto;
         margin-top: 70px;
+        
     }
 
     .top {
         color: beige;
         font-weight: bold;
-        left: 50%;
-        width: 20%;
-        padding: 10px;
+        // left: 50%;
+        // width: 20%;
+        padding: 20px;
         margin: 20px;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
+        // display: block;
+        // margin-left: auto;
+        // margin-right: auto;
         text-align: center;
     }        
 
     .content {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        height: 30px;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-evenly;
+        // grid-template-columns: 1fr 1fr;
+        // height: 30px;
+        input{
+        width: 50%;
+        margin: 15px;
+        padding: 10px 10px 10px 10px;
+    }
     }
 
-    label {
+    .lable_login {
         background-color: #424b54;
         border: 1px solid beige;
         color: beige;
         font-weight: bold;
         border-radius: 30px;
-        width: 40%;
+        width: 20%;
         text-align: center;
-        padding-top: 10px;
-        margin-left: 60px;
-        height: 30px;
+        padding: 10px;
+        // padding-top: 10px;
+        
+        margin: 20px;
+        // margin-left: 60px;
+        // height: 30px;
+        
     }
+    
 
     .box {
-        width: 80%;
-        height: 50px;
-        margin: auto;
-        padding: auto;
-        text-align: center;
-        margin-bottom: 20px;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-evenly;
+        // width: 80%;
+        // height: 50px;
+        // margin: 20px 20px 20px 20px;
+        // padding: auto;
+        // text-align: center;
+        // margin-bottom: 20px;
     }
 
     .btn {
         text-align: center;
-        width: 20%;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 10px;
+        width: 30%;
+        margin: 20px 0px 0px 10px;
+        // margin-left: auto;
+        // margin-right: auto;
+        // margin-top: 10px;
         font-weight: bold;
         font-size: 1.2em;
         background-color: #424b54;
@@ -123,7 +140,7 @@ export default {
         color: beige;
         text-decoration: none;
         border: 1px solid beige;
-        padding: 10px 20px;
+        padding: 10px 10px;
 
         &:hover {
         background-color: sandybrown;

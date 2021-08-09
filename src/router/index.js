@@ -12,6 +12,7 @@ import AddReward from '@/views/reward/AddReward'
 import EditReward from '@/views/reward/EditReward'
 import DeleteReward from '@/views/reward/DeleteReward'
 import GetReward from '@/views/reward/GetReward'
+import LeaderboardUse from '@/views/leaderboard/LeaderboardUse'
 
 Vue.use(VueRouter)
 
@@ -75,6 +76,11 @@ const routes = [
     path: "/reward/:id/getreward",
     name: "GetReward",
     component: GetReward,
+  },
+  {
+    path: '/leaderboard/use',
+    name: 'LeaderboardUse',
+    component: LeaderboardUse
   },
 ]
 

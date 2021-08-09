@@ -40,7 +40,7 @@ export default {
     data() {
         return {
             form: {
-                usernamr: "",
+                username: "",
                 email: "",
                 password: ""
             }
@@ -104,37 +104,51 @@ export default {
     }
 
     .content {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        height: 30px;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-evenly;
+        // display: grid;
+        // grid-template-columns: 1fr 1fr;
+        // height: 30px;
+        input{
+            padding: 10px 20px 10px 10px;
+            margin: 10px;
+            width: 40%;
+        }
     }
 
     label {
         background-color: #156064;
         color: beige;
         border-radius: 30px;
-        width: 40%;
+        width: 20%;
         text-align: center;
-        padding-top: 6px;
-        margin-left: 60px
+        padding: 10px 5px 10px 5px;
+        margin: 10px 5px 10px 5px;
+        // padding-top: 6px;
+        // margin-left: 60px
     }
 
     .box {
-        width: 80%;
-        height: 50px;
-        margin: auto;
-        padding: auto;
-        text-align: right;
-        margin-bottom: 20px;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-evenly;
+        // width: 80%;
+        // height: 50px;
+        // margin: auto;
+        // padding: auto;
+        // text-align: right;
+        // margin-bottom: 20px;
     }
 
     .btn {
         text-align: center;
         width: 20%;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 10px;
-        left: 500px;
+        margin: 20px;
+        // margin-left: auto;
+        // margin-right: auto;
+        // margin-top: 10px;
+        // left: 500px;
         font-weight: bold;
         font-size: 1.2em;
         background-color: #156064;
@@ -142,7 +156,7 @@ export default {
         color: beige;
         text-decoration: none;
         border: 1px solid beige;
-        padding: 10px 20px;
+        padding: 10px 10px 10px 10px;
 
         &:hover {
         background-color: sandybrown;

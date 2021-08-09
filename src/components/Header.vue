@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div id="head">
-      <h1>
+      <h1 class="ChaKaiMook">
         ChaKaiMook
       </h1>
     </div>

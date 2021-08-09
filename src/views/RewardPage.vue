@@ -1,14 +1,14 @@
 <template>
   <div>
-    <div class="banner"></div>
-    <div class="word">
+    <div class="banner_reward"></div>
+    <div class="word_reward">
       <h1>รางวัลสุดพิเศษ</h1>
     </div>
 
     <div>
       <table>
         <thead>
-          <tr>
+          <tr class="thead_R">
             <th>รางวัล</th>
             <th>คงเหลือ</th>
             <th>คะแนนในการแลก</th>
@@ -43,9 +43,10 @@
         </tbody>
       </table>
     </div>
-    <router-link class="add" v-if="isAdmin()" to="/addreward"
-      >เพิ่มของรางวัล</router-link
-    >
+    <div class="router_add">
+      <router-link class="add" v-if="isAdmin()" to="/addreward">เพิ่มของรางวัล</router-link>
+    </div>
+    
   </div>
 </template>
 
@@ -94,14 +95,18 @@ export default {
 </script>
 
 <style>
-.banner {
+.thead_R{
+  background-color: rgb(25, 25, 202) ;
+  color:rgb(255, 255, 255);
+}
+.banner_reward {
   background-image: url("../assets/gift.jpg");
   background-position: center;
   width: 100%;
   height: 300px;
   filter: blur(5px);
 }
-.word {
+.word_reward{
   position: absolute;
   border: 3px solid skyblue;
   background-color: rgba(0, 0, 0, 0.4);
@@ -114,6 +119,7 @@ export default {
   height: 10%;
   padding: 10px;
   text-align: center;
+  border-radius: 10px;
 }
 h1 {
   font-size: 4em;
@@ -138,11 +144,41 @@ table {
 }
 .edit, .delete, .get {
   text-decoration-line: none;
+  color:blue;
+
 }
-.add {
+.edit:hover, .delete:hover, .get:hover 
+{
+ color: rgb(103, 4, 216); 
+}
+/* .add {
   margin-left: 45%;
   font-size: 1.5em;
   padding: 20px;
   text-decoration-line: none;
+  
+} */
+.add{
+  display: inline-block;
+  margin: 0px 0px 50px 0px;
+  text-decoration-line: none;
+    font-size: 1.5em;
+    padding: 5px;
+    /* margin: 20px 0px 0px 500px; */
+    background-color:whitesmoke; 
+    color:black; 
+    border: 2px solid rgb(31, 31, 209);
+    border-radius:5px ;
+}
+.add:hover{
+    background-color: rgb(55, 55, 255);
+    color: white;
+
+}
+.router_add{
+  flex-flow: row wrap;
+    display: flex;
+    align-content: center;
+    justify-content: space-evenly;
 }
 </style>

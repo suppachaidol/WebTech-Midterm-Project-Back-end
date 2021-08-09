@@ -27,7 +27,7 @@
 <script>
 import BeverageStore from '@/store/Beverage'
 import AuthUser from '@/store/AuthUser'
-
+import UserService from "@/services/UserService"
 export default {
   data() {
     return {
@@ -50,10 +50,11 @@ export default {
       return AuthUser.getters.isAuthen
     },
     async buyItem(item) {
+      let user = await UserService.getUserById(AuthUser.getters.user.id)
       let payload1 = {
         id: AuthUser.getters.user.id,
-        total_points: item.points + AuthUser.getters.user.total_points,
-        max_points: item.points + AuthUser.getters.user.max_points,
+        total_points: item.points + user.total_points,
+        max_points: item.points + user.max_points,
       }
       console.log(payload1)
 
@@ -80,9 +81,10 @@ export default {
 
 <style lang="scss" scoped>
   .container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    flex-flow: row wrap;
+    display: flex;
     align-content: center;
+    justify-content: space-evenly;
   }
 
   .content {
@@ -132,5 +134,10 @@ export default {
     padding: 10px 20px;
     text-align: center;
     margin-top: 20px;
+    &:hover{
+      cursor: pointer;
+      color: #333;
+      background-color: beige;
+    }
   }
 </style>
